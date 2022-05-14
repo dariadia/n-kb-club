@@ -1,1 +1,49 @@
-<body>helloworld</body>
+<body>
+  <div class="saucer"></div>
+  <div class="message">🛸 Aliens are coming for ya 👽</div>
+  <div class="saucer"></div>
+  <h1 style="text-align:center;font:300 36px/48px monospace;">UFO SIGHTINGS<br/>TAKEN SERIOUSLY BY THE U.S. GOVERNMENT</h1><ul><li><b>February 24, 1942</b>: Los Angeles. <a href="https://en.wikipedia.org/wiki/Battle_of_Los_Angeles" target="_blank">Read more</a></li>
+    <li><b>June 21, 1947</b>:	Maury Island. <a href="https://en.wikipedia.org/wiki/Maury_Island_incident" target="_blank">Read more</a></li>
+    <li><b>June 24, 1947</b>:	Maury Island. <a href="https://en.wikipedia.org/wiki/Kenneth_Arnold_UFO_sighting" target="_blank">Read more</a></li>
+
+  </ul>
+</body>
+
+<style> 
+body {
+  background-color: black;
+  color: white;
+}
+.message {
+  width: fit-content;
+  margin: 22vh auto;
+  font: 48px/56px monospace;
+}
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  color:white;
+}
+.saucer {
+  height: 20vh;
+  background-color: blue;
+  background-image: linear-gradient(to right,
+      rgba(0, 0, 0, .9) 25%,
+      rgba(0, 0, 0, .1) 50%,
+      rgba(0, 0, 0, .9) 75%);
+  color: white;
+  width: 20%;
+
+  -webkit-animation: 4s linear 0s infinite alternate fly;
+          animation: 4s linear 0s infinite alternate fly;
+}
+
+@-webkit-keyframes fly { from { margin-left: -20%; } to { margin-left: 100%; }  }
+@keyframes fly { from { margin-left: -20%; } to { margin-left: 100%; }  }
+ul {
+  margin: auto;
+  width: fit-content;
+  font: 24px/48px Arial;
+}
+</style>
