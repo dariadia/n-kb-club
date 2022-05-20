@@ -1,0 +1,230 @@
+<body>
+  <main>
+    <aside><span>🪶</span><span>✨</span><span>🌸</span><span>🔥</span><span>⛵️</span><span>🌴</span><span>🎁</span><span>🪶</span><span>🍀</span><span>🙌🏽</span></aside>
+    <section>
+      <form method="#" action="#" class="input-wrapper">
+        <input type="text" class="input-name" placeholder="Roger Delgado" id="name" minlength="1" maxlength="50">
+        <button class="submit-button" id="name-submit">Let's go!</button>
+        <br />
+        <label class="name-input_label" for="name">
+          Greetings there! What's your name? 🕵🏽
+        </label>
+      </form>
+    </section>
+  
+    <section id="result" />
+  </main>
+  <script>
+    const config = {};
+  config.places = [
+    'Mars',
+    'UNIT lab',
+    'Middle Earth',
+    'Wonderland',
+    'Narnia',
+    'Willy Wonka`s Factory',
+    'the Great Wall of China',
+    'Atlantis',
+    'the Bermudas',
+    'the deepest darkest corner of the ocean',
+    'the Enchanted Forest',
+    'the Chamber of Secrets',
+    'd`Urbervilles',
+    'an animal farm',
+    'Mansfield Park',
+    'Transilvania',
+    'the Moon Castle',
+    'the other side of the Moon',
+    'the Forgotten Valley',
+    'the Forbidden Castle',
+  ];
+  config.artefacts = [
+    'peanuts',
+    'a glass of water',
+    'the Excalibur',
+    'Aladdin`s lamp',
+    'the hand of Midas',
+    'Spice Melange',
+    'the philosopher’s stone',
+    'the Black Cauldron',
+    'the Necronomicon',
+    'the Mjölnir',
+    'an old diary',
+    'their talent in a box',
+    'best regards',
+    'raw chicken',
+    'a small mouse',
+    'a loudspeaker',
+    'Schrödinger`s cat',
+    'elven swords',
+    'hobbit-sized shoes',
+    'a paradox',
+    'Pandora`s box',
+  ]
+  config.events = {
+    chapterOne: {
+      intro: ['you fell down the rabbit hole', 'you chased your dreams', 'you time jumped', 'you`ve been chosen', 'you killed a mocking bird', 'we captured you', 'the Wild has called you', 'you lost your illusions', 'you died', 'everyone died', 'you ate those prunes', 'you hated garlic', 'we found your IP', 'you won the lottery', 'you are cool', 'you`ve experienced the quantum heaven', 'we want you to', 'like legends of Norse mythology, medieval, and chivalric tales'],
+      callToAction: ['must fulfill the prophecy', 'buy me snacks', 'have to crack the code of the Woosters', 'should fly over the cuckoo`s nest', 'need to steal the grapes of wrath', 'have to relocate some jewellery', 'have to defeat the boss', 'must slay 325 and a half goblins', 'should lie your way out', 'must trick the Titans', 'must defeat the Minotaur', 'have to predict the positions and movements of sun, moon, stars and planets'],
+      pointOfNoReturn: ['we won`t return you home', 'the whole world is doomed', 'we don`t expect you to', 'you go to war against Sparta', 'visit the Vanity Fair', 'the Master will control your mind', 'you`re deserted here', 'this day is infinite', 'the battle between good and evil never ends', 'Poseidon shall never speak to you', 'you never unlock the vast resources of the intuitive mind'],
+    },
+    chapterTwo: {
+      mystery: ['Next to the wall sits', 'On the ceiling hangs upside down', 'Over there drinks coffee', 'Over the hills frolics', 'Inside the wardrobe sings', 'In the adjacent room hides', 'Behind you looms', 'Under the nest cowers', 'Painting the walls red is', 'Dancing in the moonlight you see'],
+      newFriends: ['Virginia Woolf', 'William Shakespeare', 'James Joyce', 'Maya Angelou', 'Osho', 'Elizabeth Gaskell', 'Alexander Solzhenitsyn', 'Charles Dickens', 'Victor Hugo', 'Agatha Christie', 'Barbara Cartland', 'Danielle Steel', 'Dr. Seuss', 'Jirō Akagawa', 'Jin Yong', 'Osamu Tezuka', 'C. S. Lewis'],
+      majorEvent: ['help you', 'save the world', 'smoke', 'leave', 'lend you an axe', 'build you a horse', 'go with you to Middlemarch', 'fly a plane', 'write a new book', 'hunt a whale', 'enjoy life', 'take their pills', 'try pot luck', 'put on the kettle'],
+    },
+    chapterThree: {
+      action: ['Go!', 'Cry!', 'Dance!', 'Wait another one hundred years in solitude.', 'Hide.', 'Climb over the garden wall.', 'Paint the sky.', 'Grow apples.', 'Tend to the garden inside of you.', 'Raise hell!', 'Cry crocodile tears.', 'Count the chickens before they hatch.', 'Add insult to injury!', 'Beat a dead horse.', 'Bite off more than you can chew.'],
+      highAction: ['Your companion should join you', 'Your companion shall avenge you', 'By the law, your companion cannot talk to you', 'Your companion throws you food', 'Next to you, your companion reads a book', 'Your companion laughs at you', 'Your companion is devil’s advocate', 'Killing two birds with one stone, you companion never could'],
+      simmer: ['you hear the cockoo', 'the communists come', 'the democrats arrive', 'the food is here', 'you hear the screams', 'it`s Hedgehog Day', 'the Queen of Hearts approves of you', 'all hell breaks lose', 'it rains cats and dogs', 'you see stars', 'finish the cake', 'see the oompa loompas'],
+    },
+    chapterFour: {
+      conflict: ['the toughest part', 'the rain', 'the longest mission', 'the highest point', 'the most glorious battle', 'the game changer', 'the turning point', 'highest mountain', 'lowest low', 'highest high'],
+      majorEvent: ['draws out a sabre', 'eats chicken', 'fights bears', 'dusts the flying carpet', 'applies make up', 'warms up', 'protests for women`s rights', 'explores the harsh realities of the Industrial Age', 'portrays fatherhood and friendship', 'recites heartfelt poems', 'starts investigating their family’s corrupt and immoral activities', 'preaches on the strengths and failures of human nature'],
+      majorTwist: ['betrays you', 'sets their hair on fire', 'eats chocolate', 'supports the judicial reform movement in the 1870s', 'plans to take over the world', 'reads Gothic fiction', 'dreams of pioneering in Nebraska in the late 19th century', 'gives you a unique insight into life', 'hides a dagger in his sleeve', 'shouts for help', 'picks up berries', 'fractures society', 'casts a spell on you'],
+    },
+    chapterFive: {
+      tieLines: ['tying shoes', 'solving a murder mystery', 'catering a lemonade booth', 'selling the Polar express tickets', 'polishing the Power Ring', 'counting sheep', 'loudly debating rhetorical trickery', 'learning to think for himself', 'laughing like a villain', 'stealing a cow-creamer', 'being spontaneous'],
+      resolution: ['You ask them to help.', 'You bring them along.', 'They protect you from the disappointment that awaited!', 'They claim to have seen a naked flying lady.', 'They raise questions about consequences and taking responsibility for your actions.', 'They challenge Victorian ideals of purity and sexual morals.', 'Together, you go on a snow-laden adventure.', 'You debate what it means to be human', 'You denounce acts of the past while including a profound plea for tolerance.', 'You stand up for yourself.', 'Will we rise and challenge those who seek to shape our future or sleepwalk toward conditioning by technology? You wonder.'],
+      next: ['become an enigmatic millionaire who throws decadent parties', 'wake up', 'address issues of race, inequality and segregation with both levity and compassion', 'find a handsome partner with a good fortune', 'recall the truth universally acknowledged', 'fly the magical carpet', 'wear the invisibility cloak', 'hire a valet', 'write a book about your adventure', 'move on with your life', 'stay with your new friend'],
+    }
+  };
+  
+  const getSeed = (seed, max, min) => {
+    max = max || 1000000000;
+    min = min || 137;
+    seed = (seed * 9301 + 49297) % 233280;
+    var rnd = seed / 233280; 
+    return Math.round(min + rnd * (max - min), 0);
+  }
+  
+  const getNameCode = name => {
+    let nameCode = [];
+    name.split("")
+      .map(letter => nameCode.push(letter.charCodeAt(0)))
+    return nameCode.join("");
+  }
+  
+  const getOption = ({ options, seed }) => {
+    let index = seed / options.length;
+    index /= 666;
+    index = Math.round(index / 13136)
+    if (index >= options.length) {
+      index = Number(index.toString()
+        .split("")
+        .reduce((acc, num) => Number(acc) + Number(num)));
+    }
+    return options[index] || options[0];
+  }
+  
+  const getAdventureText = ({ name, seed, config }) => {
+    return `
+      <b>Hi ${name}! Or should I call you ${seed}?</b>
+    <p>Welcome to <b>${getOption({ options: config.places, seed })}</b>. You are here because <b>${getOption({ options: config.events.chapterOne.intro, seed })}</b>. Now you <b>${getOption({ options: config.events.chapterOne.callToAction, seed })}</b>, otherwise <b>${getOption({ options: config.events.chapterOne.pointOfNoReturn, seed })}</b>.</p> 
+    <p>Look around. You aren't alone. <b>${getOption({ options: config.events.chapterTwo.mystery, seed })}</b> <b>${getOption({ options: config.events.chapterTwo.newFriends, seed })}</b>. Get them to <b>${getOption({ options: config.events.chapterTwo.majorEvent, seed })}</b>.</p>
+    <p><b>${getOption({ options: config.events.chapterThree.action, seed })}</b> <b>${getOption({ options: config.events.chapterThree.highAction, seed })}</b>. Yet, they throw you <b>${getOption({ options: config.artefacts, seed })}</b>. Then, wait till <b>${getOption({ options: config.events.chapterThree.simmer, seed })}</b>.</p>
+    <p>You're almost there! Here comes <b>${getOption({ options: config.events.chapterFour.conflict, seed })}</b> of your quest where you <b>${getOption({ options: config.events.chapterOne.callToAction, seed })}</b>. <b>${getOption({ options: config.events.chapterTwo.newFriends, seed })}</b> <b>${getOption({ options: config.events.chapterFour.majorEvent, seed })}</b> with <b>${getOption({ options: config.artefacts, seed: seed / 13 })}</b> and <b>${getOption({ options: config.events.chapterFour.majorTwist, seed })}</b>. You can do this!</p>
+    <p>You and <b>${getOption({ options: config.events.chapterTwo.newFriends, seed })}</b> notice <b>${getOption({ options: config.events.chapterTwo.newFriends, seed: seed / 13 })}</b> <b>${getOption({ options: config.events.chapterFive.tieLines, seed: seed })}</b>. <b>${getOption({ options: config.events.chapterFive.resolution, seed: seed })}</b></p>
+  <p>  No longer, <b>${getOption({ options: config.events.chapterOne.pointOfNoReturn, seed })}</b>. And you <b>${getOption({ options: config.events.chapterFive.next, seed })}</b>.</p>`;
+  }
+  
+  const init = (config) => {
+    const nameForm = document.querySelector(".input-wrapper");
+    const resultNode = document.getElementById("result");
+    
+    nameForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nameString = document.getElementById("name").value || "anonym";
+      const nameCode = getNameCode(nameString);
+      const nameSeed = getSeed(nameCode);
+      resultNode.innerHTML = getAdventureText({name: nameString, seed: nameSeed, config});
+      resultNode.style.display = 'block';
+    })
+  }
+  
+  init(config);
+  </script>
+</body>
+
+<style>
+  body {
+    background: #C8D43E;
+    background: -webkit-radial-gradient(top right, #C8D43E, #A01191);
+    background: -moz-radial-gradient(top right, #C8D43E, #A01191);
+    background: radial-gradient(to bottom left, #C8D43E, #A01191);
+    width: 100%;
+    min-height: 100vh;
+  }
+  aside {
+    display: grid;
+    grid-template-columns : repeat(5,1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  span {
+    font: 36px/48px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  }
+
+  .input-wrapper {
+    margin: auto;
+    width: fit-content;
+  }
+  .submit-button {
+    background: #22201F;
+    color: #FFFFFF;
+    padding: 0px 20px;
+    width: 133px;
+    height: 52px;
+    border: none;
+    border-radius: 4px;
+    margin: 8px 0px;
+  }
+  .submit-button:hover {
+    transition: background-color 0.2s;
+    cursor: pointer;
+    background: #07624D;
+  }
+  .submit-button:active {
+    transition: background-color 0.2s;
+    background: #42473F;
+  }
+  .submit-button:focus {
+    outline: none;
+  }
+  .input-name {
+    min-width: 480px;
+    height: 52px;
+    padding: 11px;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  .input-name:focus {
+    outline: none;
+  }
+
+  #result {
+    display: none;
+    margin-top: 2em;
+    padding: 2em;
+    border: 2px dashed white;
+    color: white;
+    max-width: 80vw;
+    margin: 40px auto;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .input-name {
+      min-width: 200px;
+      margin: auto;
+    }
+    .submit-button {
+      margin: 20px auto;
+    }
+    #result {
+      margin-top: 2em;
+      padding: 0;
+      border: none;
+    }
+  }
+</style>
