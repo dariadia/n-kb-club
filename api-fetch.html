@@ -1,0 +1,31 @@
+<body style="background: -webkit-linear-gradient(to bottom, #000000, #434343);background: linear-gradient(to bottom, #000000, #434343);color:white;font: 24px/48px monospace;padding:24px;">
+  <h1>List of Doctor Who Characters</h1>
+  <ul style="list-style: cjk-ideographic;" id="result"></ul>
+  <script>
+    const URL_CHARACTERS = 'https://doctorwhoapi.herokuapp.com/characters'
+    const resultNode = document.getElementById("result")
+   
+    fetch(URL_CHARACTERS)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return resultNode.innerHTML = response.statusText + '<br />Sorry mate, it seems the TARDIS telepathic circuits are overloaded right now. try again later.'
+      }
+    })
+    .then((data) => {
+      data.characters.forEach(character => {
+      const itemNode = document.createElement("li");
+      itemNode.style = "padding:20px"
+      itemNode.innerHTML = `
+      name: ${character.name}
+      <br />
+      ${character.species ? `species: ${character.species}<br />` : ''}
+      ${character.actorOrActress ? `actor/actress: ${character.actorOrActress}` : ''}
+      `
+      resultNode.appendChild(itemNode)
+      })
+    });
+
+  </script>
+</body>
