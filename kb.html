@@ -1,0 +1,27 @@
+<body style="background: -webkit-linear-gradient(to bottom, #000000, #434343);background: linear-gradient(to bottom, #000000, #434343);color:white;font: 24px/48px monospace;padding:24px;">
+  <h1>List of Star Trek Characters</h1>
+  <ul style="list-style: cjk-ideographic;" id="result"></ul>
+  <script>
+    const URL_CHARACTERS = 'http://stapi.co/api/v1/rest/character/search?pageSize=20&pageNumber=3&sort=yearOfBirth,ASC'
+    const resultNode = document.getElementById("result")
+   
+    fetch(URL_CHARACTERS)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      data.characters.forEach(character => {
+      const itemNode = document.createElement("li");
+      itemNode.style = "padding:20px"
+      itemNode.innerHTML = `
+      name: ${character.name}
+      <br />
+      ${character.yearOfBirth ? `birth: ${character.yearOfBirth}<br />` : ''}
+      ${character.yearOfDeath ? `death: ${character.yearOfDeath}` : ''}
+      `
+      resultNode.appendChild(itemNode)
+      })
+    });
+
+  </script>
+</body>
